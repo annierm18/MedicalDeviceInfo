@@ -36,10 +36,22 @@
 
         <div id="results">
 
-            <button onclick="NewTab()">
+           
+
+          
+        </div>
+
+        <div  id="bottom_bottons" >
+            <button id="report_button" style="display:none;" onclick="NewTab()">
                 Report issues with your medical device
             </button>
+        
+
+            <button id="facebook_button" style="display:none;" onclick="NewTab2()">
+                Search for device-based Facebook communities
+            </button>
         </div>
+
         <script src="toggleInfo2.js" type="text/javascript"></script>
         <script>
             document.getElementById('searchbar').addEventListener("input",
@@ -85,6 +97,10 @@
                             document.getElementById("selected_device").innerText = item.getElementsByTagName('code')[0];
                             document.getElementById("selected_device").style.display = "block"; 
 
+                            document.getElementById("facebook_button").style.display = "block";
+                            document.getElementById("report_button").style.display = "block";
+                            
+
                             document.getElementById("results").style.display = "none";
                         })
                     })
@@ -98,6 +114,14 @@
                 function NewTab() {
                     window.open(
                     "https://www.accessdata.fda.gov/scripts/medwatch/index.cfm?action=consumer.reporting1", "_blank");
+                }
+
+                function NewTab2() {
+
+                    var txt = document.getElementById("device_name").innerText.replaceAll(" ", "+");
+                   
+                    window.open(
+                        "https://www.google.com/search?q=facebook+"+txt+"+community");
                 }
             </script>
         </div>
