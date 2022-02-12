@@ -84,6 +84,32 @@ select, .select{
     line-height: 22px;
     color: var(--blue);
 }
+
+#fields{
+    margin-top: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+    border-radius: 11px;
+    text-align: center;
+    border-width: 0px;
+}
+
+
+.btn2{
+    width: 180px;
+    height: 50px; 
+    background: var(--lightblue);  
+    border-radius: 11px;
+    margin-left: 10px;
+    border-width: 0px;
+    color: var(--darkgrey);
+    font-size: 18px;
+    line-height: 22px;
+    float: right;
+    align-items: center;
+    text-align: center;
+}
+
 .btn1{
     width: 180px;
     height: 50px; 
@@ -97,9 +123,20 @@ select, .select{
     align-items: center;
     text-align: center;
 }
+
+
 .btn1:hover{
     background: var(--darkblue);
     color: white;
+}
+
+.btn2:hover{
+    background: var(--darkblue);
+    color: white;
+}
+
+#selected_device {
+    font-size: 20px;
 }
 
 /* Larger than mobile */

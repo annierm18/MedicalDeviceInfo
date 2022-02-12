@@ -57,15 +57,16 @@
                 <div class="reporttext">
                     <span>Have an issue?</span>
                 </div>
+                <button id="facebook_button" style="display:none;" class="btn2" onclick="NewTab2()">
+                    Find a patient community
+                </button>
                 <button id="report_button" class="btn1" onclick="NewTab()">
                     Report a concern
                 </button>
             </div>
         
 
-            <button id="facebook_button" style="display:none;" onclick="NewTab2()">
-                Search for device-based Facebook communities
-            </button>
+            
             
         </div>
 
@@ -92,7 +93,7 @@
                     console.log(xhr.responseText); // 'This is the returned text.'
                     const res =JSON.parse(xhr.responseText);
                     const formatted_res = res.results.map((r, index) => {
-                        return `<div id="fields" style="display:block" class="toggle"><button style="display:block" "id=${index}>${r.device_name}</button><code class="toggle2" style="display:none">${JSON.stringify(r)}</code></div>`;
+                        return `<div id="fields" style="display:block" class="toggle"><button class="btn3" style="display:block" "id=${index}>${r.device_name}</button><code class="toggle2" style="display:none">${JSON.stringify(r)}</code></div>`;
                     });
 
                     document.getElementById('results').innerHTML = formatted_res.join("");
