@@ -22,36 +22,14 @@
         <h1 id="device_name" display="none"> </h1>
         <p id="instructions" display="block"> Choose a search field, and type in a search term</p>
         <div id="selected_device"></div>
-        <div class="directions">
+        <div id="info" class="directions">
             <p>find a medical device for up to date info</p>
             <p>Search by...</p> 
         </div>
         <select name="cars" id="search_field">
-            <option value="address_1">address_1</option>
-            <option value="address_2">address_2</option>
-            <option value="advisory_committee">advisory_committee</option>
-            <option value="advisory_committee_description">advisory_committee_description</option>
-            <option value="applicant">applicant</option>
-            <option value="city">city</option>
-            <option value="clearance_type">clearance_type</option>
-            <option value="contact">contact</option>
-            <option value="country_code">country_code</option>
-            <option value="date_received">date_received</option>
-            <option value="decision_code">decision_code</option>
-            <option value="decision_date">decision_date</option>
-            <option value="decision_description">decision_description</option>
             <option value="device_name">device_name</option>
-            <option value="expedited_review_flag">expedited_review_flag</option>
             <option value="k_number">k_number</option>
-            <option value="openfda">openfda</option>
-            <option value="postal_code">postal_code</option>
             <option value="product_code">product_code</option>
-            <option value="review_advisory_committee">review_advisory_committee</option>
-            <option value="state">state</option>
-            <option value="statement_or_summary">statement_or_summary</option>
-            <option value="third_party_flag">third_party_flag</option>
-            <option value="zip_code">zip_code</option>
-            <option value="meta">meta</option>
         </select>
 
             <input class="select" type="text" name="search" value="" placeholder="Search any medical device" id="searchbar">
@@ -68,7 +46,7 @@
                 const value = e.currentTarget.value;
                 const search_field = document.getElementById('search_field').value;
                 const offset = 0;
-                const limit = 100;
+                const limit = 5;
                 const query_string = `?search=${search_field}:${value}&limit=${limit}&skip=${offset}`;
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', 'https://api.fda.gov/device/510k.json' + query_string);
@@ -84,13 +62,14 @@
                         return `<div id="fields" style="display:block" class="toggle"><button style="display:block" "id=${index}>${r.device_name}</button><code class="toggle2" style="display:none">${JSON.stringify(r)}</code></div>`;
                     });
 
-                    document.getElementById('results').innerHTML = formatted_res;
+                    document.getElementById('results').innerHTML = formatted_res.join("");
                   
                     document.querySelectorAll('.toggle').forEach(item => {
                         item.addEventListener('click', event => {
 
-                            var txt = item.getElementsByTagName('button')[0].innerText; 
+                            var txt = item.getElementsByTagName('button')[0].innerText;  
 
+                            document.getElementById("info").style.display = "none"; 
                             document.getElementById("searchbar").style.display = "none"; 
                             document.getElementById("search_field").style.display = "none"; 
                             document.getElementById("instructions").style.display = "none"; 
