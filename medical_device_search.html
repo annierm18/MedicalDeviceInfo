@@ -19,9 +19,19 @@
             <h1 id="main_page_header"></h1> MedDevice Search </h1>
         </div>
 
-        <h1 id="device_name" display="none"> </h1>
         <p id="instructions" display="block"> Choose a search field, and type in a search term</p>
-        <div id="selected_device"></div>
+        <div id="ay-papi" style="display: none;">
+            <h1 id="device_name" display="none"> </h1>
+            <div id="selected_device"></div>
+            <br>
+            <div class="card">
+                <div class="container">
+                  <h2><b>Premarket Notification 510(k)</b></h2>
+                  <p>FDA clearance through the 510(k) process means the agency is in agreement with the manufacturer that a medical device is similar to a previously approved product.</p>
+                </div>
+            </div>
+            
+        </div>
         <div id="info" class="directions">
             <p>find a medical device for up to date info</p>
             <p>Search by...</p> 
@@ -94,8 +104,18 @@
                             
                             console.log(item.getElementsByTagName('code')[0]);
                             
-                            document.getElementById("selected_device").innerText = item.getElementsByTagName('code')[0];
+                            document.getElementById("selected_device").innerHTML;
+                            const info = JSON.parse(item.getElementsByTagName('code')[0].innerHTML)
+                            const fields = [{kay: 'applicant', title: 'Company'}, {kay: 'k_number', title: 'Application'}];
+                            // This is line 1
+                            let inner = "";
+                            fields.forEach((f) => {
+                                inner += `<code>${f.title}:     ${info[f.kay]}</code>`
+                            })
+                            document.getElementById("selected_device").innerHTML = inner;
+                            document.getElementById("selected_device").firstChild.style.display = "block";
                             document.getElementById("selected_device").style.display = "block"; 
+                            document.getElementById("ay-papi").style.display = "block"; 
 
                             document.getElementById("facebook_button").style.display = "block";
                             document.getElementById("report_button").style.display = "block";
