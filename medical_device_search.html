@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+    <body>
+        <h1> Medical Device Search </h1>
+        <p> Choose a search field, and type in a search term</p>
+        <select name="cars" id="search_field">
+            <option value="address_1">address_1</option>
+            <option value="address_2">address_2</option>
+            <option value="advisory_committee">advisory_committee</option>
+            <option value="advisory_committee_description">advisory_committee_description</option>
+            <option value="applicant">applicant</option>
+            <option value="city">city</option>
+            <option value="clearance_type">clearance_type</option>
+            <option value="contact">contact</option>
+            <option value="country_code">country_code</option>
+            <option value="date_received">date_received</option>
+            <option value="decision_code">decision_code</option>
+            <option value="decision_date">decision_date</option>
+            <option value="decision_description">decision_description</option>
+            <option value="device_name">device_name</option>
+            <option value="expedited_review_flag">expedited_review_flag</option>
+            <option value="k_number">k_number</option>
+            <option value="openfda">openfda</option>
+            <option value="postal_code">postal_code</option>
+            <option value="product_code">product_code</option>
+            <option value="review_advisory_committee">review_advisory_committee</option>
+            <option value="state">state</option>
+            <option value="statement_or_summary">statement_or_summary</option>
+            <option value="third_party_flag">third_party_flag</option>
+            <option value="zip_code">zip_code</option>
+            <option value="meta">meta</option>
+        </select>
+
+        <input type="text" name="search" value="" placeholder="type search here" id="searchbar">
+
+        <div id="results">
+        </div>
+
+        <script>
+            document.getElementById('searchbar').addEventListener("input",
+            (e) => {
+                const value = e.currentTarget.value;
+                const search_field = document.getElementById('search_field').value;
+                const offset = 0;
+                const limit = 100;
+                const query_string = `?search=${search_field}:${value}&limit=${limit}&skip=${offset}`;
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'https://api.fda.gov/device/510k.json' + query_string);
+                xhr.send(null);
+                xhr.onreadystatechange = function () {
+                var DONE = 4; // readyState 4 means the request is done.
+                var OK = 200; // status 200 is a successful return.
+                if (xhr.readyState === DONE) {
+                    if (xhr.status === OK) {
+                    console.log(xhr.responseText); // 'This is the returned text.'
+                    const res =JSON.parse(xhr.responseText);
+                    const formatted_res = res.results.map((r) => {
+                        return `<div><h1>${r.device_name}</h1><code>${JSON.stringify(r)}</code></div>`;
+                    });
+                    console.log(formatted_res);
+                    document.getElementById('results').innerHTML = formatted_res;
+                    } else {
+                    console.log('Error: ' + xhr.status); // An error occurred during the request.
+                    }
+                } else {
+                    document.getElementById('results').innerHTML = `<div><h1>Try another search</h1></div>`
+                }
+                };
+            })
+        </script>
+    </body>
+</html>
