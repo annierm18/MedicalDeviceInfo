@@ -1,9 +1,13 @@
 :root{
     --off-black: #454B57;
     --lightgrey: #F0F0F0;
+    --grey: #8E8E8E;
     --coolwhite: #fafbff; 
     --lightblue: #DBE3F4; 
     --lightblue2: #CFD9ED;
+    --darkgrey: #93A0BA;
+    --blue: #5C8DF6;
+    --darkblue: #4c74ca;
 }
 *{
     font-family: Quicksand;
@@ -14,36 +18,95 @@ body{
     text-align: center;
     color: var(--off-black);
 }
-h1{
-    font-family: Quicksand;
-    font-weight: bold;
-    font-size: 36px;
+.main-container{
+    width: 91.6666667%;
+    margin-left: 4.1666667%;
 }
 .header{
-    margin-top: 50px;
+    margin-top: 10%;
+    font-weight: bold;
+    font-size: 36px;
 }
 
 .directions{
     font-weight: bold;
     font-size: 14px;    
-}
-.select{
-    border: 3px solid #CFD9ED;
-    border-radius: 13px;
+    margin-bottom: 30px;
+    
 }
 
 .card {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-  }
-  
-  /* On mouse-over, add a deeper shadow */
-  .card:hover {
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
-  
-  /* Add some padding inside the card container */
-  .container {
+}
+
+/* Add some padding inside the card container */
+.container {
     padding: 2px 16px;
-  }
+}
+
+
+select, .select{
+    border: 3px solid #CFD9ED;
+    border-radius: 13px;
+    color: var(--grey);
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    line-height: 30px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.report-container{
+    display: inline-block;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 50px;
+
+}
+.reporttext{
+    float: left;
+    height: 50px; 
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: var(--blue);
+}
+.btn1{
+    width: 180px;
+    height: 50px; 
+    background: var(--lightblue);  
+    border-radius: 11px;
+    border-width: 0px;
+    color: var(--darkgrey);
+    font-size: 18px;
+    line-height: 22px;
+    float: right;
+    align-items: center;
+    text-align: center;
+}
+.btn1:hover{
+    background: var(--darkblue);
+    color: white;
+}
+
+/* Larger than mobile */
+@media (min-width: 400px) {
+    .main-container{
+        margin-left: 16.6666667%;
+        width: 66.66666667%;
+    }
+    
+}
