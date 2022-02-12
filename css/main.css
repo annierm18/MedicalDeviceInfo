@@ -1,0 +1,33 @@
+:root{
+    --off-black: #454B57;
+    --lightgrey: #F0F0F0;
+    --coolwhite: #fafbff; 
+    --lightblue: #DBE3F4; 
+    --lightblue2: #CFD9ED;
+}
+*{
+    font-family: Quicksand;
+    box-sizing:border-box;
+}
+body{
+    background-color: var(--coolwhite);
+    text-align: center;
+    color: var(--off-black);
+}
+h1{
+    font-family: Quicksand;
+    font-weight: bold;
+    font-size: 36px;
+}
+.header{
+    margin-top: 50px;
+}
+
+.directions{
+    font-weight: bold;
+    font-size: 14px;    
+}
+.select{
+    border: 3px solid #CFD9ED;
+    border-radius: 13px;
+}
