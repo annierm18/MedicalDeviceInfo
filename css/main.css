@@ -139,7 +139,15 @@ select, .select{
 #selected_device {
     font-size: 20px;
 }
-
+.container{
+    margin-top: 20px;
+}
+#device_name{
+    color: var(--blue);
+}
+.notif{
+    text-align:left;
+}
 /* Larger than mobile */
 @media (min-width: 400px) {
     .main-container{
